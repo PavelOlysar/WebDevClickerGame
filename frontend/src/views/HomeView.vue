@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <h1 class="text-4xl font-bold text-center text-red-500">
+      test
+    </h1>
   </main>
 </template>
