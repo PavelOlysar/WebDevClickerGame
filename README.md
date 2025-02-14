@@ -19,8 +19,8 @@ Web Dev Clicker je hra inspirovaná principy *cookie clickeru*, zaměřená na s
 ### Backend
 
 * Nest JS  
-* Neon, PostgreSQL  
-* MikroORM
+* PostgreSQL  
+* TypeORM
 
 ## Funkce hry
 
