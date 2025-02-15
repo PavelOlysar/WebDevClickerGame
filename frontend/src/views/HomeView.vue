@@ -1,10 +1,12 @@
-<script setup lang="ts">
-</script>
-
-<template>
+<!-- <template>
   <main>
-    <h1 class="text-4xl font-bold text-center text-red-500">
-      test
-    </h1>
+    <div class="cursor-pointer">
+      <img src="@/assets/wevDeveloper.gif" alt="webDeveloper" />
+    </div>
+    <Icon icon="mdi-light:home" />
   </main>
 </template>
+
+<script setup lang="ts">
+import { Icon } from "@iconify/vue";
+</script> -->
