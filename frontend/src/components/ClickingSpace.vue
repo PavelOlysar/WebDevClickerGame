@@ -1,6 +1,12 @@
 <template>
-  <div class="cursor-pointer" @click="handleClick">
-    <img src="@/assets/wevDeveloper.gif" alt="webDeveloper" class="noSelectAndDrag" />
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body items-center text-center">
+      <div
+        class="cursor-pointer hover:scale-105 transition-all duration-200 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+        @click="handleClick">
+        <img src="@/assets/wevDeveloper.gif" alt="webDeveloper" class="noSelectAndDrag w-96 h-96 object-contain" />
+      </div>
+    </div>
   </div>
 </template>
 

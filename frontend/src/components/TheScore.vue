@@ -1,6 +1,10 @@
 <template>
-  <div class="score">
-    Score: {{ score }}
+  <div class="stats shadow bg-base-100 w-full">
+    <div class="stat">
+      <div class="stat-title">Current Balance</div>
+      <div class="stat-value">${{ score }}</div>
+      <div class="stat-desc">per click: $1</div>
+    </div>
   </div>
 </template>
 
