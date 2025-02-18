@@ -3,23 +3,35 @@
     <div class="card-body">
       <h2 class="card-title">Boosts</h2>
       <div class="flex flex-col gap-2">
-        <button class="btn btn-outline gap-2">
-          <Icon icon="logos:html-5" />
-          Coffee
-        </button>
-        <button class="btn btn-outline gap-2">
-          <Icon icon="logos:css-3" />
-          Energy Drink
-        </button>
-        <button class="btn btn-outline gap-2">
-          <Icon icon="logos:javascript" />
-          Tea
-        </button>
+        <BoostCard v-for="boost in boosts" :key="boost.name" v-bind="boost" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// import { Icon } from "@iconify/vue";
+import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
+import BoostCard from './BoostCard.vue'
+
+const boosts = ref([
+  {
+    name: 'Coffee',
+    description: 'A cup of coffee doubles your clicking power',
+    icon: 'mdi:coffee',
+    duration: 30,
+    multiplier: 2,
+    cooldown: 60,
+    cost: 100
+  },
+  {
+    name: 'Energy Drink',
+    description: 'An energy drink triples your clicking power',
+    icon: 'mdi:bottle-tonic',
+    duration: 20,
+    multiplier: 3,
+    cooldown: 120,
+    cost: 250
+  }
+])
 </script>

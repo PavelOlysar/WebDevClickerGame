@@ -1,9 +1,9 @@
 <template>
-  <div class="navbar bg-base-100 shadow-lg rounded-box">
+  <div class="navbar bg-base-100 shadow-lg">
     <div class="flex-1">
-      <a class="btn btn-ghost text-xl">Web Dev Clicker Game</a>
+      <a class="btn btn-ghost text-xl font-bold">Dev Clicker</a>
     </div>
-    <div class="flex-none gap-2">
+    <div class="gap-4 px-2">
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -21,18 +21,30 @@
           </li>
         </ul>
       </div>
+      <button class="btn btn-primary" @click="showAuthModal = true">Sign In</button>
     </div>
+
+    <AuthModal v-model="showAuthModal" @sign-in="handleSignIn" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import AuthModal from './AuthModal.vue'
 
-const themes = ['light', 'dark', 'cyberpunk', 'synthwave', 'valentine']
-const currentTheme = ref('light')
+const themes = ['dark', 'light', 'cyberpunk', 'synthwave', 'valentine']
+const currentTheme = ref('dark')
 
 const changeTheme = (theme: string) => {
   currentTheme.value = theme
   document.documentElement.setAttribute('data-theme', theme)
+}
+
+const showAuthModal = ref(false)
+
+const handleSignIn = () => {
+  // Implement sign in logic
+  console.log('Signing in with:', { email: email.value, password: password.value })
+  showAuthModal.value = false
 }
 </script>
