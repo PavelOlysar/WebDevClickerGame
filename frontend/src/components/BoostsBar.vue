@@ -11,7 +11,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Icon } from '@iconify/vue'
 import BoostCard from './BoostCard.vue'
 
 const boosts = ref([
@@ -32,6 +31,15 @@ const boosts = ref([
     multiplier: 3,
     cooldown: 120,
     cost: 250
+  },
+  {
+    name: 'Stack Overflow',
+    description: 'Find the perfect solution',
+    icon: 'mdi:stack-overflow',
+    duration: 15,
+    multiplier: 5,
+    cooldown: 300,
+    cost: 1000
   }
 ])
 </script>

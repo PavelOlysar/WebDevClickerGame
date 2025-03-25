@@ -4,6 +4,10 @@ Pavel Olyšar 3.C
 
 GitHub Repository: [https://github.com/PavelOlysar/WebDevClickerGame](https://github.com/PavelOlysar/WebDevClickerGame)
 
+## Hosting
+
+[odkaz](https://olysar-pavel-64f63-kurnv.hosting.ssps.cajthaml.eu/)
+
 ## Popis Hry
 
 Web Dev Clicker je hra inspirovaná principy *cookie clickeru*, zaměřená na svět webového vývoje. Hráč klikáním vydělává peníze, za které si postupně odemyká nové programovací jazyky, technologie, počítače a další upgrady. Cílem je neustále zvyšovat produktivitu a zisky.

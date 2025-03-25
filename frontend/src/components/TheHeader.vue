@@ -43,8 +43,7 @@ const changeTheme = (theme: string) => {
 const showAuthModal = ref(false)
 
 const handleSignIn = () => {
-  // Implement sign in logic
-  console.log('Signing in with:', { email: email.value, password: password.value })
+  // pridat sign in logiku
   showAuthModal.value = false
 }
 </script>

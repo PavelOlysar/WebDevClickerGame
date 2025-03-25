@@ -1,13 +1,15 @@
 <template>
   <div class="relative">
     <button class="btn btn-outline gap-2 w-full" @click="handleActivate" @mouseenter="showTooltip = true"
-      @mouseleave="showTooltip = false">
+      @mouseleave="showTooltip = false" :disabled="isOnCooldown" :class="{ 'btn-success': isActive }">
       <Icon :icon="icon" class="w-6 h-6" />
       <div class="flex-1 flex justify-between items-center">
         <span>{{ name }}</span>
         <div class="flex items-center gap-2">
-          <span class="badge badge-secondary">{{ formatCost(cost) }}</span>
-          <span class="badge badge-accent">{{ formatDuration(duration) }}s</span>
+          <span class="badge badge-secondary">${{ formatCost(cost) }}</span>
+          <span v-if="timeLeft > 0" class="badge badge-success">{{ timeLeft }}s</span>
+          <span v-else-if="cooldownLeft > 0" class="badge badge-warning">{{ cooldownLeft }}s</span>
+          <span v-else class="badge badge-accent">{{ duration }}s</span>
           <span class="badge badge-primary">x{{ multiplier }}</span>
         </div>
       </div>
@@ -26,8 +28,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+// TODO - ukazatel na cas, ukazatel na cooldown, poradny ukazatel na aktivni boosty, neaktivni styl kdyz nemam penize
+
+import { ref, computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import { useGameStore } from '@/stores/gameStore'
 
 interface Props {
   name: string
@@ -40,8 +45,29 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-
+const store = useGameStore()
 const showTooltip = ref(false)
+
+const boost = computed(() => store.activeBoosts[props.name])
+const now = computed(() => Date.now())
+
+const isActive = computed(() => {
+  return boost.value?.endTime && boost.value.endTime > now.value
+})
+
+const isOnCooldown = computed(() => {
+  return !!(boost.value?.cooldownEndTime && boost.value.cooldownEndTime > now.value)
+})
+
+const timeLeft = computed(() => {
+  if (!boost.value?.endTime) return 0
+  return Math.max(0, Math.ceil((boost.value.endTime - now.value) / 1000))
+})
+
+const cooldownLeft = computed(() => {
+  if (!boost.value?.cooldownEndTime) return 0
+  return Math.max(0, Math.ceil((boost.value.cooldownEndTime - now.value) / 1000))
+})
 
 const formatDuration = (value: number) => {
   return value.toString()
@@ -52,7 +78,12 @@ const formatCost = (value: number) => {
 }
 
 const handleActivate = () => {
-  // Implement boost activation logic
-  console.log(`Activating ${props.name} boost`)
+  store.activateBoost(
+    props.name,
+    props.multiplier,
+    props.duration,
+    props.cooldown,
+    props.cost
+  )
 }
 </script>

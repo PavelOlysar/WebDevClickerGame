@@ -20,11 +20,25 @@
 </template>
 
 <script setup lang="ts">
-// import { RouterLink, RouterView } from 'vue-router'
 import ClickingSpace from "./components/ClickingSpace.vue";
 import UpgradesBar from "./components/UpgradesBar.vue";
 import TheScore from "./components/TheScore.vue";
 import TheHeader from "./components/TheHeader.vue";
 import BoostsBar from "./components/BoostsBar.vue";
 import TheFooter from "./components/TheFooter.vue";
+import { onMounted, onUnmounted } from 'vue'
+import { useGameStore } from '@/stores/gameStore'
+
+const store = useGameStore()
+let tickInterval: ReturnType<typeof setInterval>
+
+onMounted(() => {
+  tickInterval = setInterval(() => {
+    store.tick()
+  }, 1000)
+})
+
+onUnmounted(() => {
+  clearInterval(tickInterval)
+})
 </script>
